@@ -10,9 +10,6 @@ START_TEST(test_standardRomanNumerals_ReturnsExpected)
        ck_assert_int_eq(toArabic("III"), 3);
 
        ck_assert_int_eq(toArabic("V"), 5);
-
-
-
    }
 END_TEST
 
