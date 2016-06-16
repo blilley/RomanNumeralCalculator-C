@@ -1,14 +1,11 @@
 #include <stdlib.h>
 #include <check.h>
 #include "RomanNumeralConverterTests.h"
-
-int toArabicFromString(char* numeral){
-    return -1;
-}
+#include "../src/RomanNumeralConverter.h"
 
 START_TEST(test_standardRomanNumerals_ReturnsExpected)
    {
-       ck_assert_int_eq(toArabicFromString("I"), 1);
+       ck_assert_int_eq(toArabic("I"), 1);
    }
 END_TEST
 
