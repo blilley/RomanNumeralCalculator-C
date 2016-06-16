@@ -7,6 +7,8 @@ int toArabic(char* numeral){
     for(int i = 0; i < strlen(numeral); i++){
         if(numeral[i] == 'V')
             value += 5;
+        else if(numeral[i] == 'X')
+            value += 10;
         else
             value++;
     }
