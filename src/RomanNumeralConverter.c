@@ -3,9 +3,9 @@
 #include "RomanNumeralConverter.h"
 
 int toArabic(char* numeral){
-    if(strcmp(numeral, "III") == 0)
-        return 3;
-    if(strcmp(numeral, "II") == 0)
-        return 2;
-    return 1;
+    int value = 0;
+    for(int i = 0; i < strlen(numeral); i++){
+        value++;
+    }
+    return value;
 }
