@@ -15,6 +15,8 @@ START_TEST(test_standardRomanNumerals_ReturnsExpected)
        ck_assert_int_eq(toArabic("L"), 50);
        ck_assert_int_eq(toArabic("C"), 100);
        ck_assert_int_eq(toArabic("D"), 500);
+       ck_assert_int_eq(toArabic("M"), 1000);
+
    }
 END_TEST
 
