@@ -33,6 +33,8 @@ START_TEST(test_toRoman_ReturnsExpected)
    {
        assertToRoman(1, "I");
        assertToRoman(2, "II");
+       assertToRoman(5, "V");
+
    }
 END_TEST
 
