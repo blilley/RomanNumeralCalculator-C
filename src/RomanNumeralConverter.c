@@ -28,11 +28,11 @@ int toArabic(char* numeral){
 
 char* toRoman(int arabic){
     char *value = calloc (50, sizeof(char));
-    if(arabic == 5)
-        strcat(value, "V");
-    else
-        for(int i = 0; i < arabic; i++){
-            strcat(value, "I");
+    for(int i = 6; i >= 0; i--){
+        while(arabic >= arabicValues[i]){
+            arabic -= arabicValues[i];
+            strcat(value, romanNumerals[i]);
         }
+    }
     return value;
 }
