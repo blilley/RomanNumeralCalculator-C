@@ -27,5 +27,5 @@ int toArabic(char* numeral){
 }
 
 char* toRoman(int arabic){
-    return "";
+    return "I";
 }
