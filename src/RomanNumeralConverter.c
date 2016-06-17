@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include "RomanNumeralConverter.h"
 
-int const arabicValues[13] = {1, 5, 10, 50, 100};
-char const *romanNumerals[13] = {"I", "V", "X", "L", "C"};
+int const arabicValues[13] = {1, 5, 10, 50, 100, 500};
+char const *romanNumerals[13] = {"I", "V", "X", "L", "C", "D"};
 
 int getArabicValue(char roman){
     char romanString[2] = {roman, '\0'};
