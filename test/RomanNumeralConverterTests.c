@@ -8,7 +8,7 @@ START_TEST(test_standardRomanNumerals_ReturnsExpected)
        ck_assert_int_eq(toArabic("I"), 1);
        ck_assert_int_eq(toArabic("II"), 2);
        ck_assert_int_eq(toArabic("III"), 3);
-
+       ck_assert_int_eq(toArabic("IV"), 4);
        ck_assert_int_eq(toArabic("V"), 5);
        ck_assert_int_eq(toArabic("X"), 10);
 
