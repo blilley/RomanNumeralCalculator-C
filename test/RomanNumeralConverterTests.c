@@ -16,7 +16,9 @@ START_TEST(test_standardRomanNumerals_ReturnsExpected)
        ck_assert_int_eq(toArabic("C"), 100);
        ck_assert_int_eq(toArabic("D"), 500);
        ck_assert_int_eq(toArabic("M"), 1000);
-
+       ck_assert_int_eq(toArabic("CMXCIX"), 999);
+       ck_assert_int_eq(toArabic("MMXVI"), 2016);
+       ck_assert_int_eq(toArabic("LXXIV"), 74);
    }
 END_TEST
 
