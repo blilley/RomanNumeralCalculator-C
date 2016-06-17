@@ -3,12 +3,12 @@
 #include <stdio.h>
 #include "RomanNumeralConverter.h"
 
-int const arabicValues[13] = {1, 5, 10, 50};
-char const *romanNumerals[13] = {"I", "V", "X", "L"};
+int const arabicValues[13] = {1, 5, 10, 50, 100};
+char const *romanNumerals[13] = {"I", "V", "X", "L", "C"};
 
 int getArabicValue(char roman){
     char romanString[2] = {roman, '\0'};
-    for(int i = 0; i < 4; i++){
+    for(int i = 0; i < 13; i++){
         if(strcmp(romanNumerals[i], romanString) == 0)
             return arabicValues[i];
     }
