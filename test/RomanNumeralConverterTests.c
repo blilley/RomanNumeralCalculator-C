@@ -36,6 +36,7 @@ START_TEST(test_toRoman_ReturnsExpected)
        assertToRoman(4, "IV");
        assertToRoman(5, "V");
        assertToRoman(999, "CMXCIX");
+       assertToRoman(440, "CDXL");
    }
 END_TEST
 
