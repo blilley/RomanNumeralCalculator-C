@@ -25,3 +25,7 @@ int toArabic(char* numeral){
     }
     return value;
 }
+
+char* toRoman(int arabic){
+    return "";
+}

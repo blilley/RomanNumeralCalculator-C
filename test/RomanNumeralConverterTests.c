@@ -3,7 +3,7 @@
 #include "RomanNumeralConverterTests.h"
 #include "../src/RomanNumeralConverter.h"
 
-START_TEST(test_standardRomanNumerals_ReturnsExpected)
+START_TEST(test_toArabic_ReturnsExpected)
    {
        ck_assert_int_eq(toArabic("I"), 1);
        ck_assert_int_eq(toArabic("II"), 2);
@@ -22,13 +22,22 @@ START_TEST(test_standardRomanNumerals_ReturnsExpected)
    }
 END_TEST
 
+START_TEST(test_toRoman_ReturnsExpected)
+   {
+       ck_assert_str_eq(toRoman(1), "I");
+   }
+END_TEST
+
 Suite* romanNumeralConverterSuite(void)
 {
    Suite* suite = suite_create("Roman Numeral Converter Tests");
-   TCase* testCase = tcase_create("Convert Roman Numeral to Arabic for standard Numerals");
-   tcase_add_test(testCase, test_standardRomanNumerals_ReturnsExpected);
+   TCase* toArabicTestCase = tcase_create("Convert Roman Numeral to Arabic");
+   tcase_add_test(toArabicTestCase, test_toArabic_ReturnsExpected);
+   suite_add_tcase(suite, toArabicTestCase);
 
-   suite_add_tcase(suite, testCase);
+   TCase* toRomanTestCase = tcase_create("Convert Arabic to Roman Numeral");
+   tcase_add_test(toRomanTestCase, test_toRoman_ReturnsExpected);
+   suite_add_tcase(suite, toRomanTestCase);
 
    return suite;
 }
