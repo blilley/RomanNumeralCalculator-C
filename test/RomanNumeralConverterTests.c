@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <check.h>
 #include "RomanNumeralConverterTests.h"
@@ -22,9 +23,16 @@ START_TEST(test_toArabic_ReturnsExpected)
    }
 END_TEST
 
+void assertToRoman(int input, char* expected){
+    char* output = toRoman(input);
+    ck_assert_str_eq(output, expected);
+    free(output);
+}
+
 START_TEST(test_toRoman_ReturnsExpected)
    {
-       ck_assert_str_eq(toRoman(1), "I");
+       assertToRoman(1, "I");
+       assertToRoman(2, "II");
    }
 END_TEST
 
