@@ -12,6 +12,8 @@ void assertEqual(char* actual, char* expected){
 START_TEST(test_addition_ReturnsExpected)
    {
        assertEqual(addRomanNumerals("I", "I"), "II");
+       assertEqual(addRomanNumerals("II", "II"), "IV");
+       assertEqual(addRomanNumerals("MMX", "XVI"), "MMXXVI");
    }
 END_TEST
 
