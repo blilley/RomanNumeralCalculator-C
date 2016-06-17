@@ -6,9 +6,10 @@
 int const arabicValues[3] = {1, 5, 10};
 char const *romanNumerals[3] = {"I", "V", "X"};
 
-int getArabicValue(char* roman){
-    for(int i = 0; i < 3; i++){
-        if(strcmp(romanNumerals[i], roman) == 0)
+int getArabicValue(char roman){
+    char romanString[2] = {roman, '\0'};
+    for(int i = 0; i < 4; i++){
+        if(strcmp(romanNumerals[i], romanString) == 0)
             return arabicValues[i];
     }
     return -1;
@@ -16,9 +17,11 @@ int getArabicValue(char* roman){
 
 int toArabic(char* numeral){
     int value = 0;
-    for(int i = 0; i < strlen(numeral); i++){
-        char characterString[2] = {numeral[i], '\0'};
-        value += getArabicValue(characterString);
+    int previousValue = 0;
+    for(int i = strlen(numeral) - 1 ; i >= 0 ; i--){
+        int arabic = getArabicValue(numeral[i]);
+        value += arabic < previousValue ? -arabic : arabic;
+        previousValue = arabic;
     }
     return value;
 }
