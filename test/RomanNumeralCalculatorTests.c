@@ -20,6 +20,9 @@ END_TEST
 START_TEST(test_subtraction_ReturnsExpected)
    {
        assertEqual(subtractRomanNumerals("II", "I"), "I");
+       assertEqual(subtractRomanNumerals("X", "VI"), "IV");
+       assertEqual(subtractRomanNumerals("D", "C"), "CD");
+
    }
 END_TEST
 
