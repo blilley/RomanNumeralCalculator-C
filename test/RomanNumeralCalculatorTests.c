@@ -17,12 +17,22 @@ START_TEST(test_addition_ReturnsExpected)
    }
 END_TEST
 
+START_TEST(test_subtraction_ReturnsExpected)
+   {
+       assertEqual(subtractRomanNumerals("II", "I"), "I");
+   }
+END_TEST
+
 Suite* romanNumeralCalculatorSuite(void)
 {
    Suite* suite = suite_create("Roman Numeral Calculator Tests");
    TCase* additionTestCase = tcase_create("Addition Calculator Tests");
    tcase_add_test(additionTestCase, test_addition_ReturnsExpected);
    suite_add_tcase(suite, additionTestCase);
+
+   TCase* subtractionTestCase = tcase_create("Subtraction Calculator Tests");
+   tcase_add_test(subtractionTestCase, test_subtraction_ReturnsExpected);
+   suite_add_tcase(suite, subtractionTestCase);
 
    return suite;
 }
