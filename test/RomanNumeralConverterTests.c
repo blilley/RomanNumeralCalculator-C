@@ -12,7 +12,7 @@ START_TEST(test_standardRomanNumerals_ReturnsExpected)
        ck_assert_int_eq(toArabic("V"), 5);
        ck_assert_int_eq(toArabic("IX"), 9);
        ck_assert_int_eq(toArabic("X"), 10);
-
+       ck_assert_int_eq(toArabic("L"), 50);
    }
 END_TEST
 
