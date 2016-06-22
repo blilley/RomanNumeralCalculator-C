@@ -1,3 +1,4 @@
+CFLAGS := -std=c99
 objects := $(patsubst src/%.c,src/%.o,$(wildcard src/*.c))
 testObjects := $(patsubst test/%.c, test/%.o,$(wildcard test/*.c))
 
@@ -8,7 +9,7 @@ test: compile
 compile: $(objects) $(testObjects)
 	@mkdir -p output
 	@echo "Compiling..."
-	@gcc -o output/testrunner $(objects) $(testObjects) `pkg-config --cflags --libs check`
+	@gcc $(CFLAGS) -o output/testrunner $(objects) $(testObjects) `pkg-config --cflags --libs check`
 
 clean:
 	@echo "Cleaning output files and folders...\n"
