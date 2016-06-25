@@ -3,12 +3,19 @@
 #include <stdio.h>
 #include "RomanNumeralConverter.h"
 
-int const arabicValues[13] = {1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000};
-char const *romanNumerals[13] = {"I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"};
+#define MAX_ROMAN_NUMERAL_LENGTH 15
+#define MAX_LENGTH_FOR_LOOKUP 13
+
+int const arabicValues[MAX_LENGTH_FOR_LOOKUP] = {
+    1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000
+};
+char const *romanNumerals[MAX_LENGTH_FOR_LOOKUP] = {
+    "I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"
+};
 
 int getArabicValue(char roman){
     char romanString[2] = {roman, '\0'};
-    for(int i = 0; i < 13; i++){
+    for(int i = 0; i < MAX_LENGTH_FOR_LOOKUP; i++){
         if(strcmp(romanNumerals[i], romanString) == 0)
             return arabicValues[i];
     }
@@ -27,8 +34,8 @@ int toArabic(char* numeral){
 }
 
 char* toRoman(int arabic){
-    char *value = calloc (50, sizeof(char));
-    for(int i = 12; i >= 0; i--){
+    char *value = calloc (MAX_ROMAN_NUMERAL_LENGTH, sizeof(char));
+    for(int i = MAX_LENGTH_FOR_LOOKUP; i >= 0; i--){
         while(arabic >= arabicValues[i]){
             arabic -= arabicValues[i];
             strcat(value, romanNumerals[i]);
