@@ -1,4 +1,4 @@
-CFLAGS := -std=c99
+CFLAGS := -std=c99 -Wall -Werror
 objects := $(patsubst src/%.c,src/%.o,$(wildcard src/*.c))
 testObjects := $(patsubst test/%.c, test/%.o,$(wildcard test/*.c))
 
