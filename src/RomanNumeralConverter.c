@@ -22,7 +22,7 @@ int getArabicValue(char roman){
     return -1;
 }
 
-int toArabic(char* numeral){
+int toArabic(const char* numeral){
     int value = 0;
     int previousValue = 0;
     for(int i = strlen(numeral) - 1 ; i >= 0 ; i--){
