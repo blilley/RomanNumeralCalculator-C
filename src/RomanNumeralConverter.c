@@ -36,13 +36,11 @@ int toArabic(const char* numeral){
     return value;
 }
 
-char* toRoman(int arabic){
-    char *value = calloc (MAX_ROMAN_NUMERAL_LENGTH, sizeof(char));
+void toRoman(char *output, int arabic){
     for(int i = MAX_LENGTH_FOR_LOOKUP - 1; i >= 0; i--){
         while(arabic >= arabicValues[i]){
             arabic -= arabicValues[i];
-            strcat(value, romanNumerals[i]);
+            strcat(output, romanNumerals[i]);
         }
     }
-    return value;
 }

@@ -31,9 +31,9 @@ START_TEST(test_toArabic_ReturnsErrorCode_WithInvalidInput)
 END_TEST
 
 void assertToRoman(int input, char* expected){
-    char* output = toRoman(input);
+    char output[16] = "";
+    toRoman(output, input);
     ck_assert_str_eq(output, expected);
-    free(output);
 }
 
 START_TEST(test_toRoman_ReturnsExpected)
