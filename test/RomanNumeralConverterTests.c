@@ -3,6 +3,11 @@
 #include <check.h>
 #include "RomanNumeralConverterTests.h"
 #include "../src/RomanNumeralConverter.h"
+void assertToRoman(int input, char* expected){
+    char output[16] = "";
+    toRoman(output, input);
+    ck_assert_str_eq(output, expected);
+}
 
 START_TEST(test_toArabic_ReturnsExpected)
 {
@@ -27,14 +32,12 @@ START_TEST(test_toArabic_ReturnsErrorCode_WithInvalidInput)
 {
     ck_assert_int_eq(toArabic("Z"), -1);
     ck_assert_int_eq(toArabic("ZZ"), -1);
+    ck_assert_int_eq(toArabic("ICM"), -1);
+    ck_assert_int_eq(toArabic("CIC"), -1);
+    ck_assert_int_eq(toArabic("CLCLC"), -1);
+    ck_assert_int_eq(toArabic("VIV"), -1);
 }
 END_TEST
-
-void assertToRoman(int input, char* expected){
-    char output[16] = "";
-    toRoman(output, input);
-    ck_assert_str_eq(output, expected);
-}
 
 START_TEST(test_toRoman_ReturnsExpected)
    {
