@@ -44,9 +44,9 @@ int isATenValue(int value){
 }
 
 int isNextValueValid(int previousValue, int index, const char* numeral){
-    if(index-1 < 0 )
+    if(index - 1 < 0 )
         return SUCCESS;
-    int arabic = getArabicValue(numeral[index-1]);
+    int arabic = getArabicValue(numeral[index - 1]);
     if(previousValue > arabic || (previousValue == arabic && !isATenValue(arabic)))
         return ERROR_CODE;
 
@@ -65,7 +65,7 @@ int toArabic(const char* numeral){
     int previousValue = 0;
     for(int i = strlen(numeral) - 1 ; i >= 0 ; i--){
         int arabic = getArabicValue(numeral[i]);
-        if(arabic < 1 || nextValueIsInvalid(arabic, previousValue, i, numeral))
+        if(arabic == ERROR_CODE || nextValueIsInvalid(arabic, previousValue, i, numeral))
             return ERROR_CODE;
         value += arabic < previousValue ? -arabic : arabic;
         previousValue = arabic;
