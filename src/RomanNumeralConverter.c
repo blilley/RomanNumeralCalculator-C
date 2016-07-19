@@ -5,7 +5,7 @@
 
 #define MAX_ROMAN_NUMERAL_LENGTH 16
 #define MAX_LENGTH_FOR_LOOKUP 13
-#define MAX_LENGTH_INVALID_NUMERALS 4
+#define MAX_LENGTH_INVALID_NUMERALS 7
 #define ERROR_CODE -1
 #define SUCCESS 1
 
@@ -17,7 +17,7 @@ char const *romanNumerals[MAX_LENGTH_FOR_LOOKUP] = {
 };
 
 char const *invalidNumerals[MAX_LENGTH_INVALID_NUMERALS] = {
-    "IL", "IC", "ID", "LC"
+    "IL", "IC", "ID", "IM", "XD", "XM", "LC"
 };
 
 int getArabicValue(char roman){
