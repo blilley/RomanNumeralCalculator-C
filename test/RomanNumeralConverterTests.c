@@ -32,6 +32,7 @@ START_TEST(test_toArabic_ReturnsErrorCode_WithInvalidInput)
 {
     ck_assert_int_eq(toArabic("Z"), -1);
     ck_assert_int_eq(toArabic("ZZ"), -1);
+    ck_assert_int_eq(toArabic("A"), -1);
     ck_assert_int_eq(toArabic("ICM"), -1);
     ck_assert_int_eq(toArabic("CIC"), -1);
     ck_assert_int_eq(toArabic("CLCLC"), -1);
