@@ -37,6 +37,14 @@ START_TEST(test_toArabic_ReturnsErrorCode_WithInvalidInput)
     ck_assert_int_eq(toArabic("CLCLC"), -1);
     ck_assert_int_eq(toArabic("VIV"), -1);
     ck_assert_int_eq(toArabic("LXL"), -1);
+    ck_assert_int_eq(toArabic("IL"), -1);
+    ck_assert_int_eq(toArabic("IC"), -1);
+    ck_assert_int_eq(toArabic("ID"), -1);
+    ck_assert_int_eq(toArabic("IM"), -1);
+    ck_assert_int_eq(toArabic("XD"), -1);
+    ck_assert_int_eq(toArabic("XM"), -1);
+    ck_assert_int_eq(toArabic("LD"), -1);
+    ck_assert_int_eq(toArabic("LM"), -1);
 }
 END_TEST
 
