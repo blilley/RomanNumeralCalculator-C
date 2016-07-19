@@ -52,7 +52,6 @@ START_TEST(test_addition_Exceeds3999_ReturnsError){
 END_TEST
 
 START_TEST(test_subtraction_lessThan1_ReturnsError){
-       printf("Test\n");
        ck_assert_int_eq(subtractRomanNumerals(result, "I", "I"), -1);
 }
 END_TEST
