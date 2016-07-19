@@ -36,6 +36,7 @@ START_TEST(test_toArabic_ReturnsErrorCode_WithInvalidInput)
     ck_assert_int_eq(toArabic("CIC"), -1);
     ck_assert_int_eq(toArabic("CLCLC"), -1);
     ck_assert_int_eq(toArabic("VIV"), -1);
+    ck_assert_int_eq(toArabic("LXL"), -1);
 }
 END_TEST
 

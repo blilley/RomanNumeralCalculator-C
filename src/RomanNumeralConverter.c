@@ -35,12 +35,19 @@ int checkForInvalidNumerals(const char* numeral){
     }
     return SUCCESS;
 }
+
+int isATenValue(int value){
+    while(value >= 10){
+        value /= 10;
+    }
+    return value == 1;
+}
+
 int isNextValueValid(int previousValue, int index, const char* numeral){
     if(index-1 < 0 )
         return SUCCESS;
     int arabic = getArabicValue(numeral[index-1]);
-
-    if(previousValue > arabic || (previousValue == arabic && (arabic % 10 != 0)))
+    if(previousValue > arabic || (previousValue == arabic && !isATenValue(arabic)))
         return ERROR_CODE;
 
     return SUCCESS;
