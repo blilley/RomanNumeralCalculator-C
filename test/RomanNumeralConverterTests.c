@@ -5,7 +5,7 @@
 #include "../src/RomanNumeralConverter.h"
 static void assertToRoman(int input, char* expected){
     char output[16] = "";
-    toRoman(output, input);
+    ck_assert_int_eq(toRoman(output, input), CONVERTER_SUCCESS_CODE);
     ck_assert_str_eq(output, expected);
 }
 
@@ -30,22 +30,22 @@ END_TEST
 
 START_TEST(test_toArabic_ReturnsErrorCode_WithInvalidInput)
 {
-    ck_assert_int_eq(toArabic("Z"), -1);
-    ck_assert_int_eq(toArabic("ZZ"), -1);
-    ck_assert_int_eq(toArabic("A"), -1);
-    ck_assert_int_eq(toArabic("ICM"), -1);
-    ck_assert_int_eq(toArabic("CIC"), -1);
-    ck_assert_int_eq(toArabic("CLCLC"), -1);
-    ck_assert_int_eq(toArabic("VIV"), -1);
-    ck_assert_int_eq(toArabic("LXL"), -1);
-    ck_assert_int_eq(toArabic("IL"), -1);
-    ck_assert_int_eq(toArabic("IC"), -1);
-    ck_assert_int_eq(toArabic("ID"), -1);
-    ck_assert_int_eq(toArabic("IM"), -1);
-    ck_assert_int_eq(toArabic("XD"), -1);
-    ck_assert_int_eq(toArabic("XM"), -1);
-    ck_assert_int_eq(toArabic("LD"), -1);
-    ck_assert_int_eq(toArabic("LM"), -1);
+    ck_assert_int_eq(toArabic("Z"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("ZZ"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("A"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("ICM"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("CIC"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("CLCLC"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("VIV"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("LXL"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("IL"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("IC"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("ID"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("IM"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("XD"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("XM"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("LD"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("LM"), CONVERTER_ERROR_CODE);
 }
 END_TEST
 
@@ -65,9 +65,9 @@ END_TEST
 START_TEST(test_toRoman_ReturnsErrorCode_WithInvalidInput)
    {
        char result[16] = "";
-       ck_assert_int_eq(toRoman(result, 4000), -1);
-       ck_assert_int_eq(toRoman(result, 0), -1);
-       ck_assert_int_eq(toRoman(result, -1), -1);
+       ck_assert_int_eq(toRoman(result, 4000), CONVERTER_ERROR_CODE);
+       ck_assert_int_eq(toRoman(result, 0), CONVERTER_ERROR_CODE);
+       ck_assert_int_eq(toRoman(result, -1), CONVERTER_ERROR_CODE);
    }
 END_TEST
 
