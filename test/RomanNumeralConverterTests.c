@@ -3,7 +3,7 @@
 #include <check.h>
 #include "RomanNumeralConverterTests.h"
 #include "../src/RomanNumeralConverter.h"
-void assertToRoman(int input, char* expected){
+static void assertToRoman(int input, char* expected){
     char output[16] = "";
     toRoman(output, input);
     ck_assert_str_eq(output, expected);
@@ -57,6 +57,17 @@ START_TEST(test_toRoman_ReturnsExpected)
        assertToRoman(5, "V");
        assertToRoman(999, "CMXCIX");
        assertToRoman(440, "CDXL");
+       assertToRoman(3999, "MMMCMXCIX");
+
+   }
+END_TEST
+
+START_TEST(test_toRoman_ReturnsErrorCode_WithInvalidInput)
+   {
+       char result[16] = "";
+       ck_assert_int_eq(toRoman(result, 4000), -1);
+       ck_assert_int_eq(toRoman(result, 0), -1);
+       ck_assert_int_eq(toRoman(result, -1), -1);
    }
 END_TEST
 
@@ -73,6 +84,9 @@ Suite* romanNumeralConverterSuite(void)
    TCase* toRomanTestCase = tcase_create("Convert Arabic to Roman Numeral");
    tcase_add_test(toRomanTestCase, test_toRoman_ReturnsExpected);
    suite_add_tcase(suite, toRomanTestCase);
+   TCase* toRomanInvalidInputTestCase = tcase_create("Convert Arabic to Roman Numeral Invalid inputs");
+   tcase_add_test(toRomanInvalidInputTestCase, test_toRoman_ReturnsErrorCode_WithInvalidInput);
+   suite_add_tcase(suite, toRomanInvalidInputTestCase);
 
    return suite;
 }
