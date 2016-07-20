@@ -6,7 +6,7 @@
 
 char result[16];
 
-void setup(){
+static void setup(){
     result[0] = '\0';
 }
 
