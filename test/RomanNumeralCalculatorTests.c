@@ -11,48 +11,48 @@ static void setup(){
 }
 
 START_TEST(test_addTwoI_ReturnsII){
-    ck_assert_int_eq(addRomanNumerals(result, "I", "I"), 0);
+    ck_assert_int_eq(addRomanNumerals(result, "I", "I"), CALCULATOR_SUCCESS_CODE);
     ck_assert_str_eq(result, "II");
 }
 END_TEST
 
 START_TEST(test_addTwoII_ReturnsIV){
-    ck_assert_int_eq(addRomanNumerals(result, "II", "II"), 0);
+    ck_assert_int_eq(addRomanNumerals(result, "II", "II"), CALCULATOR_SUCCESS_CODE);
     ck_assert_str_eq(result, "IV");
 }
 END_TEST
 
 START_TEST(test_addMMXAndXVI_ReturnsMMXXVI){
-       ck_assert_int_eq(addRomanNumerals(result, "MMX", "XVI"), 0);
+       ck_assert_int_eq(addRomanNumerals(result, "MMX", "XVI"), CALCULATOR_SUCCESS_CODE);
        ck_assert_str_eq(result, "MMXXVI");
 }
 END_TEST
 
 START_TEST(test_subtractIIAndI_ReturnsI){
-       ck_assert_int_eq(subtractRomanNumerals(result, "II", "I"), 0);
+       ck_assert_int_eq(subtractRomanNumerals(result, "II", "I"), CALCULATOR_SUCCESS_CODE);
        ck_assert_str_eq(result, "I");
 }
 END_TEST
 
 START_TEST(test_subtractXAndVI_ReturnsIV){
-       ck_assert_int_eq(subtractRomanNumerals(result, "X", "VI"), 0);
+       ck_assert_int_eq(subtractRomanNumerals(result, "X", "VI"), CALCULATOR_SUCCESS_CODE);
        ck_assert_str_eq(result, "IV");
 }
 END_TEST
 
 START_TEST(test_subtractDAndC_ReturnsCD){
-       ck_assert_int_eq(subtractRomanNumerals(result, "D", "C"), 0);
+       ck_assert_int_eq(subtractRomanNumerals(result, "D", "C"), CALCULATOR_SUCCESS_CODE);
        ck_assert_str_eq(result, "CD");
 }
 END_TEST
 
 START_TEST(test_addition_Exceeds3999_ReturnsError){
-       ck_assert_int_eq(addRomanNumerals(result, "MMMCMXCVIII", "II"), -1);
+       ck_assert_int_eq(addRomanNumerals(result, "MMMCMXCVIII", "II"), CALCULATOR_ERROR_CODE);
 }
 END_TEST
 
 START_TEST(test_subtraction_lessThan1_ReturnsError){
-       ck_assert_int_eq(subtractRomanNumerals(result, "I", "I"), -1);
+       ck_assert_int_eq(subtractRomanNumerals(result, "I", "I"), CALCULATOR_ERROR_CODE);
 }
 END_TEST
 
