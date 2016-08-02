@@ -55,6 +55,12 @@ static int nextValueIsInvalid(int arabic, int previousValue, int index, const ch
     return arabic < previousValue && isNextValueValid(previousValue, index, numeral) == CONVERTER_ERROR_CODE;
 }
 
+static int isNotLegalSubtraction(int currentValue, int arabic){
+    if((currentValue/arabic) % 5 != 0)
+        return CONVERTER_ERROR_CODE;
+    return CONVERTER_SUCCESS_CODE;
+}
+
 int toArabic(const char* numeral){
     if(checkForInvalidNumerals(numeral) == CONVERTER_ERROR_CODE)
         return CONVERTER_ERROR_CODE;
@@ -64,6 +70,8 @@ int toArabic(const char* numeral){
     for(int i = strlen(numeral) - 1 ; i >= 0 ; i--){
         int arabic = getArabicValue(numeral[i]);
         if(arabic == CONVERTER_ERROR_CODE || nextValueIsInvalid(arabic, previousValue, i, numeral))
+            return CONVERTER_ERROR_CODE;
+        if(arabic < previousValue && isNotLegalSubtraction(value, arabic))
             return CONVERTER_ERROR_CODE;
         value += arabic < previousValue ? -arabic : arabic;
         previousValue = arabic;
