@@ -26,6 +26,7 @@ static int getArabicValue(char roman){
     }
     return CONVERTER_ERROR_CODE;
 }
+
 static int checkForInvalidNumerals(const char* numeral){
     for(int i = 0; i < MAX_LENGTH_INVALID_NUMERALS; i++){
         if(strstr(numeral, invalidNumerals[i])!= NULL)
@@ -34,31 +35,11 @@ static int checkForInvalidNumerals(const char* numeral){
     return CONVERTER_SUCCESS_CODE;
 }
 
-static int isATenValue(int value){
-    while(value >= 10){
-        value /= 10;
-    }
-    return value == 1;
-}
+static int isInvalidNumeral(int arabic, const char* numeral){
+    char output[MAX_ROMAN_NUMERAL_LENGTH] = "\0";
+    toRoman(output, arabic);
 
-static int isNextValueValid(int previousValue, int index, const char* numeral){
-    if(index - 1 < 0 )
-        return CONVERTER_SUCCESS_CODE;
-    int arabic = getArabicValue(numeral[index - 1]);
-    if(previousValue > arabic || (previousValue == arabic && !isATenValue(arabic)))
-        return CONVERTER_ERROR_CODE;
-
-    return CONVERTER_SUCCESS_CODE;
-}
-
-static int nextValueIsInvalid(int arabic, int previousValue, int index, const char* numeral){
-    return arabic < previousValue && isNextValueValid(previousValue, index, numeral) == CONVERTER_ERROR_CODE;
-}
-
-static int isNotLegalSubtraction(int currentValue, int arabic){
-    if((currentValue/arabic) % 5 != 0)
-        return CONVERTER_ERROR_CODE;
-    return CONVERTER_SUCCESS_CODE;
+    return strcmp(output, numeral) != 0;
 }
 
 int toArabic(const char* numeral){
@@ -69,13 +50,13 @@ int toArabic(const char* numeral){
     int previousValue = 0;
     for(int i = strlen(numeral) - 1 ; i >= 0 ; i--){
         int arabic = getArabicValue(numeral[i]);
-        if(arabic == CONVERTER_ERROR_CODE || nextValueIsInvalid(arabic, previousValue, i, numeral))
-            return CONVERTER_ERROR_CODE;
-        if(arabic < previousValue && isNotLegalSubtraction(value, arabic))
-            return CONVERTER_ERROR_CODE;
         value += arabic < previousValue ? -arabic : arabic;
         previousValue = arabic;
     }
+
+    if(isInvalidNumeral(value, numeral))
+        return CONVERTER_ERROR_CODE;
+
     return value;
 }
 
