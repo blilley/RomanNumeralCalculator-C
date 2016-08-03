@@ -51,6 +51,11 @@ START_TEST(test_toArabic_ReturnsErrorCode_WithInvalidInput)
     ck_assert_int_eq(toArabic("XLXL"), CONVERTER_ERROR_CODE);
     ck_assert_int_eq(toArabic("LXL"), CONVERTER_ERROR_CODE);
     ck_assert_int_eq(toArabic("IVIV"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("IVX"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("IIVV"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("IIX"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("XLC"), CONVERTER_ERROR_CODE);
+    ck_assert_int_eq(toArabic("IVIV"), CONVERTER_ERROR_CODE);
 }
 END_TEST
 
